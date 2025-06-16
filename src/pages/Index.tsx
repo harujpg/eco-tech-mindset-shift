@@ -1,10 +1,28 @@
 
 import { MetricCard } from "@/components/MetricCard";
+import { ImpactCalculator } from "@/components/ImpactCalculator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Leaf, Earth, Recycle, TreePalm, Lightbulb } from "lucide-react";
+import { Leaf, Earth, Recycle, TreePalm, Lightbulb, Search } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigate(`/especies?search=${encodeURIComponent(searchTerm)}`);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-teal-50">
       {/* Header */}
@@ -39,6 +57,11 @@ const Index = () => {
           />
         </div>
 
+        {/* Impact Calculator */}
+        <div className="mb-8 flex justify-center">
+          <ImpactCalculator />
+        </div>
+
         {/* Sustainability Section */}
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <div className="flex items-center space-x-3 mb-6">
@@ -71,13 +94,17 @@ const Index = () => {
           </div>
           
           <div className="mt-6 flex space-x-4">
-            <Button className="bg-primary hover:bg-primary/90">
-              <Lightbulb className="mr-2 h-4 w-4" />
-              Saiba Mais sobre Conscientização
-            </Button>
-            <Button variant="outline">
-              Ver Métricas de Impacto
-            </Button>
+            <Link to="/conscientizacao">
+              <Button className="bg-primary hover:bg-primary/90">
+                <Lightbulb className="mr-2 h-4 w-4" />
+                Saiba Mais sobre Conscientização
+              </Button>
+            </Link>
+            <Link to="/impactos">
+              <Button variant="outline">
+                Ver Métricas de Impacto
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -85,8 +112,17 @@ const Index = () => {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <h3 className="text-xl font-semibold mb-4">Pesquisa Científica</h3>
           <div className="flex space-x-4">
-            <Input placeholder="Buscar espécie marinha..." className="flex-1" />
-            <Button>Pesquisar</Button>
+            <Input 
+              placeholder="Buscar espécie marinha..." 
+              className="flex-1"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            <Button onClick={handleSearch}>
+              <Search className="mr-2 h-4 w-4" />
+              Pesquisar
+            </Button>
           </div>
         </div>
       </div>

@@ -12,37 +12,74 @@ const Impactos = () => {
             <Recycle className="h-8 w-8 text-primary" />
             <div>
               <h1 className="text-3xl font-bold text-primary">Impactos Ambientais</h1>
-              <p className="text-muted-foreground">Monitoramento dos efeitos da atividade humana nos oceanos</p>
+              <p className="text-muted-foreground">Dados científicos sobre ameaças aos oceanos</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg p-6 mb-8">
+            <h3 className="text-lg font-semibold mb-4">Principais Ameaças aos Oceanos</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold mb-2">Poluição por Plástico</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• 8 milhões de toneladas/ano entram nos oceanos</li>
+                  <li>• 5 trilhões de pedaços de plástico flutuando</li>
+                  <li>• 90% das aves marinhas têm plástico no estômago</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Mudanças Climáticas</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Temperatura dos oceanos +0.6°C desde 1969</li>
+                  <li>• pH dos oceanos diminuiu 0.1 unidades</li>
+                  <li>• Nível do mar subiu 21-24 cm desde 1880</li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <Card>
               <CardHeader>
-                <CardTitle>Tipos de Poluição</CardTitle>
+                <CardTitle>Composição do Lixo Marinho</CardTitle>
+                <p className="text-sm text-muted-foreground">Dados da Ocean Conservancy</p>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between mb-2">
                       <span className="text-sm font-medium">Plásticos</span>
-                      <span className="text-sm text-muted-foreground">45%</span>
+                      <span className="text-sm text-muted-foreground">73%</span>
                     </div>
-                    <Progress value={45} className="h-2" />
+                    <Progress value={73} className="h-2" />
                   </div>
                   <div>
                     <div className="flex justify-between mb-2">
-                      <span className="text-sm font-medium">Químicos</span>
-                      <span className="text-sm text-muted-foreground">30%</span>
+                      <span className="text-sm font-medium">Papel/Papelão</span>
+                      <span className="text-sm text-muted-foreground">12%</span>
                     </div>
-                    <Progress value={30} className="h-2" />
+                    <Progress value={12} className="h-2" />
                   </div>
                   <div>
                     <div className="flex justify-between mb-2">
-                      <span className="text-sm font-medium">Óleo</span>
-                      <span className="text-sm text-muted-foreground">25%</span>
+                      <span className="text-sm font-medium">Metal</span>
+                      <span className="text-sm text-muted-foreground">8%</span>
                     </div>
-                    <Progress value={25} className="h-2" />
+                    <Progress value={8} className="h-2" />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm font-medium">Vidro</span>
+                      <span className="text-sm text-muted-foreground">5%</span>
+                    </div>
+                    <Progress value={5} className="h-2" />
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm font-medium">Outros</span>
+                      <span className="text-sm text-muted-foreground">2%</span>
+                    </div>
+                    <Progress value={2} className="h-2" />
                   </div>
                 </div>
               </CardContent>
@@ -50,30 +87,37 @@ const Impactos = () => {
 
             <Card>
               <CardHeader>
-                <CardTitle>Nível de Ameaça por Região</CardTitle>
+                <CardTitle>Espécies Ameaçadas por Região</CardTitle>
+                <p className="text-sm text-muted-foreground">Fonte: IUCN Red List</p>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
-                  <div className="flex justify-between items-center">
-                    <span className="font-medium">Pesca predatória</span>
-                    <div className="w-32 bg-gray-200 rounded-full h-4">
-                      <div className="bg-cyan-500 h-4 rounded-full" style={{width: '75%'}}></div>
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-medium">Mediterrâneo</span>
+                      <span className="text-sm text-muted-foreground">41% ameaçadas</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">75</span>
+                    <div className="w-full bg-gray-200 rounded-full h-3">
+                      <div className="bg-red-500 h-3 rounded-full" style={{width: '41%'}}></div>
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="font-medium">Mudança climática</span>
-                    <div className="w-32 bg-gray-200 rounded-full h-4">
-                      <div className="bg-cyan-500 h-4 rounded-full" style={{width: '80%'}}></div>
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-medium">Atlântico Norte</span>
+                      <span className="text-sm text-muted-foreground">35% ameaçadas</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">80</span>
+                    <div className="w-full bg-gray-200 rounded-full h-3">
+                      <div className="bg-orange-500 h-3 rounded-full" style={{width: '35%'}}></div>
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="font-medium">Poluição</span>
-                    <div className="w-32 bg-gray-200 rounded-full h-4">
-                      <div className="bg-cyan-500 h-4 rounded-full" style={{width: '90%'}}></div>
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-medium">Pacífico</span>
+                      <span className="text-sm text-muted-foreground">28% ameaçadas</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">90</span>
+                    <div className="w-full bg-gray-200 rounded-full h-3">
+                      <div className="bg-yellow-500 h-3 rounded-full" style={{width: '28%'}}></div>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -82,52 +126,58 @@ const Impactos = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Impacto da Tecnologia nos Oceanos</CardTitle>
+              <CardTitle>Impacto da Indústria de Tecnologia</CardTitle>
+              <p className="text-sm text-muted-foreground">Dados da Agência Internacional de Energia</p>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-primary">Problemas Identificados</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-primary">Problemas Quantificados</h3>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start space-x-2">
                       <span className="text-red-500 mt-1">•</span>
-                      <span>Data centers costeiros afetam temperatura da água</span>
+                      <span>Setor TI: 3,7% das emissões globais de CO₂</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-red-500 mt-1">•</span>
-                      <span>Cabos submarinos perturbam habitats marinhos</span>
+                      <span>Data centers: 200 TWh de energia/ano</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-red-500 mt-1">•</span>
-                      <span>Resíduos eletrônicos contaminam ecossistemas</span>
+                      <span>E-waste: 54 milhões de toneladas/ano</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-red-500 mt-1">•</span>
-                      <span>Mineração de lítio afeta bacias hidrográficas</span>
+                      <span>Apenas 20% do e-waste é reciclado</span>
                     </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-primary">Soluções Propostas</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-primary">Soluções Baseadas em Dados</h3>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start space-x-2">
                       <span className="text-green-500 mt-1">•</span>
-                      <span>Energia renovável para infraestrutura tech</span>
+                      <span>Cloud computing: 65% menos energia</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-green-500 mt-1">•</span>
-                      <span>Reciclagem responsável de equipamentos</span>
+                      <span>Energia renovável: redução de 90% CO₂</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-green-500 mt-1">•</span>
-                      <span>Código eficiente para reduzir consumo</span>
+                      <span>Economia circular: potencial de US$ 4,5 tri</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="text-green-500 mt-1">•</span>
-                      <span>Parcerias com ONGs de conservação marinha</span>
+                      <span>Eficiência energética: redução de 50%</span>
                     </li>
                   </ul>
                 </div>
+              </div>
+              <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                <p className="text-sm text-blue-800">
+                  <strong>Meta Global:</strong> Reduzir emissões de TI em 45% até 2030 para limitar aquecimento a 1,5°C (Acordo de Paris)
+                </p>
               </div>
             </CardContent>
           </Card>

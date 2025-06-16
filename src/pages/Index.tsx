@@ -11,31 +11,31 @@ const Index = () => {
       <div className="ocean-gradient text-white p-8">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-bold mb-2">Explore os Mistérios do Oceano</h1>
-          <p className="text-xl opacity-90">Dados em tempo real sobre a vida marinha mundial</p>
+          <p className="text-xl opacity-90">Dados científicos sobre a vida marinha mundial</p>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto p-8">
-        {/* Metrics Grid */}
+        {/* Metrics Grid - Dados reais baseados em fontes científicas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <MetricCard
-            title="Espécies Catalogadas"
-            value="1248"
+            title="Espécies Marinhas Conhecidas"
+            value="~240,000"
             icon={Leaf}
-            subtitle="Oceano Atlântico"
+            subtitle="Estimativa científica atual"
           />
           <MetricCard
-            title="Temperatura Média"
-            value="24.5°C"
+            title="Temperatura Média Oceânica"
+            value="17.5°C"
             icon={Earth}
-            subtitle="Recifes de coral"
+            subtitle="NOAA 2023"
           />
           <MetricCard
-            title="Poluição Detectada"
-            value="18%"
+            title="Lixo Plástico nos Oceanos"
+            value="8 milhões"
             icon={Recycle}
-            subtitle="Áreas monitoradas"
+            subtitle="toneladas/ano (ONU)"
           />
         </div>
 
@@ -53,19 +53,19 @@ const Index = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Impacto da Tecnologia nos Oceanos</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li>• Data centers consomem energia que pode afetar ecossistemas marinhos</li>
-                <li>• Cabos submarinos impactam habitats oceânicos</li>
-                <li>• Resíduos eletrônicos chegam aos oceanos via poluição</li>
-                <li>• Mineração de terras raras afeta bacias hidrográficas</li>
+                <li>• Setor de TI representa 3,7% das emissões globais de carbono</li>
+                <li>• Data centers consomem 1% da energia mundial</li>
+                <li>• Resíduos eletrônicos: 54 milhões de toneladas/ano</li>
+                <li>• Apenas 20% do e-waste é reciclado adequadamente</li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Soluções Sustentáveis</h3>
+              <h3 className="text-lg font-semibold mb-4">Soluções Baseadas em Evidências</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li>• Energia renovável para data centers</li>
-                <li>• Programas de reciclagem de equipamentos</li>
-                <li>• Otimização de código para reduzir consumo</li>
-                <li>• Parcerias com organizações de conservação marinha</li>
+                <li>• Uso de energia renovável pode reduzir 45% das emissões</li>
+                <li>• Virtualização reduz consumo energético em 80%</li>
+                <li>• Economia circular pode gerar US$ 4,5 trilhões</li>
+                <li>• Cloud computing é 93% mais eficiente energeticamente</li>
               </ul>
             </div>
           </div>
@@ -83,9 +83,9 @@ const Index = () => {
 
         {/* Quick Actions */}
         <div className="bg-white rounded-lg shadow-lg p-6">
-          <h3 className="text-xl font-semibold mb-4">Monitoramento Rápido</h3>
+          <h3 className="text-xl font-semibold mb-4">Pesquisa Científica</h3>
           <div className="flex space-x-4">
-            <Input placeholder="Buscar espécie..." className="flex-1" />
+            <Input placeholder="Buscar espécie marinha..." className="flex-1" />
             <Button>Pesquisar</Button>
           </div>
         </div>

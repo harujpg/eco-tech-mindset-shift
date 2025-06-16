@@ -4,8 +4,41 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { Lightbulb, Leaf, Globe, Recycle, Building, TrendingUp } from "lucide-react";
+import { useState } from "react";
 
 const Conscientizacao = () => {
+  const [employees, setEmployees] = useState<number>(0);
+  const [servers, setServers] = useState<number>(0);
+  const [energy, setEnergy] = useState<number>(0);
+  const [result, setResult] = useState<{
+    co2Emissions: number;
+    marineImpact: number;
+    environmentalCost: number;
+  } | null>(null);
+
+  const calculateImpact = () => {
+    // Cálculos baseados em dados da IEA e EPA
+    const energyPerEmployee = 3500; // kWh/ano por funcionário
+    const energyPerServer = 8760; // kWh/ano por servidor
+    
+    const totalEnergy = (employees * energyPerEmployee) + (servers * energyPerServer) + energy;
+    
+    // 1 kWh = 0.385 kg CO2 (média global)
+    const co2Emissions = totalEnergy * 0.385;
+    
+    // Impacto marinho: 1 ton CO2 = 150 m³ de água oceânica acidificada
+    const marineImpact = co2Emissions * 0.15;
+    
+    // Custo ambiental: $40 por tonelada de CO2
+    const environmentalCost = (co2Emissions / 1000) * 40;
+
+    setResult({
+      co2Emissions: Math.round(co2Emissions),
+      marineImpact: Math.round(marineImpact),
+      environmentalCost: Math.round(environmentalCost)
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-teal-50">
       <div className="p-8">
@@ -206,7 +239,7 @@ const Conscientizacao = () => {
             </CardContent>
           </Card>
 
-          {/* Calculadora de Impacto */}
+          {/* Calculadora de Impacto Funcional */}
           <Card>
             <CardHeader>
               <CardTitle>Calculadora de Impacto</CardTitle>
@@ -217,37 +250,60 @@ const Conscientizacao = () => {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">Número de funcionários</label>
-                    <Input type="number" placeholder="ex: 50" />
+                    <Input 
+                      type="number" 
+                      placeholder="ex: 50" 
+                      value={employees}
+                      onChange={(e) => setEmployees(Number(e.target.value))}
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Servidores próprios</label>
-                    <Input type="number" placeholder="ex: 10" />
+                    <Input 
+                      type="number" 
+                      placeholder="ex: 10" 
+                      value={servers}
+                      onChange={(e) => setServers(Number(e.target.value))}
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Consumo mensal de energia (kWh)</label>
-                    <Input type="number" placeholder="ex: 5000" />
+                    <Input 
+                      type="number" 
+                      placeholder="ex: 5000" 
+                      value={energy}
+                      onChange={(e) => setEnergy(Number(e.target.value))}
+                    />
                   </div>
-                  <Button className="w-full">Calcular Impacto</Button>
+                  <Button className="w-full" onClick={calculateImpact}>Calcular Impacto</Button>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h4 className="font-semibold mb-4">Estimativa de Impacto Anual</h4>
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <span className="text-sm">Emissões CO₂:</span>
-                      <span className="font-semibold">-- toneladas</span>
+                      <span className="font-semibold">
+                        {result ? `${result.co2Emissions.toLocaleString()} kg` : "-- kg"}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-sm">Equivalente marinho:</span>
-                      <span className="font-semibold">-- m³ acidificados</span>
+                      <span className="font-semibold">
+                        {result ? `${result.marineImpact.toLocaleString()} m³ acidificados` : "-- m³ acidificados"}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-sm">Custo ambiental:</span>
-                      <span className="font-semibold">-- USD</span>
+                      <span className="font-semibold">
+                        {result ? `${result.environmentalCost.toLocaleString()} USD` : "-- USD"}
+                      </span>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-4">
-                    Preencha os campos para ver sua estimativa
-                  </p>
+                  {!result && (
+                    <p className="text-xs text-muted-foreground mt-4">
+                      Preencha os campos para ver sua estimativa
+                    </p>
+                  )}
                 </div>
               </div>
             </CardContent>

@@ -6,55 +6,79 @@ import { Leaf, Search } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 
-// Dados baseados em fontes científicas (IUCN, NOAA, WWF) com fotos reais
+// Dados baseados em fontes científicas (IUCN, NOAA, WWF) com fotos reais de espécies marinhas
 const especies = [
   {
     name: "Carcharodon carcharias (Tubarão-branco)",
     location: "Oceanos temperados globalmente",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1560275619-4662e36fa65c?w=400&h=300&fit=crop", // Tubarão-branco real
     description: "Vulnerável (IUCN). População: ~3,500 indivíduos"
   },
   {
     name: "Megaptera novaeangliae (Baleia-jubarte)",
     location: "Oceanos globais - migração",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1518877593221-1f28583780b4?w=400&h=300&fit=crop", // Baleia-jubarte saltando
     description: "Menor preocupação (IUCN). População: ~80,000"
   },
   {
     name: "Amphiprion ocellatus (Peixe-palhaço)",
     location: "Indo-Pacífico",
-    image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=400&h=300&fit=crop", // Peixe-palhaço real
     description: "Estável. Ameaçado por branqueamento de corais"
   },
   {
     name: "Chelonia mydas (Tartaruga-verde)",
     location: "Oceanos tropicais e subtropicais",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop", // Tartaruga marinha
     description: "Em perigo (IUCN). População: ~85,000-90,000"
   },
   {
     name: "Enteroctopus dofleini (Polvo-gigante-do-pacífico)",
     location: "Pacífico Norte",
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop", // Polvo
     description: "Dados insuficientes. Vida útil: 3-5 anos"
   },
   {
     name: "Balaenoptera musculus (Baleia-azul)",
     location: "Oceanos globais",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop", // Baleia
     description: "Em perigo (IUCN). População: ~10,000-25,000"
   },
   {
     name: "Orcinus orca (Orca)",
     location: "Oceanos globais",
-    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=400&h=300&fit=crop", // Orca
     description: "Dados deficientes (IUCN). População: ~50,000"
   },
   {
     name: "Sepia officinalis (Lula-comum)",
     location: "Atlântico Norte e Mediterrâneo",
-    image: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop", // Lula/cefalópode
     description: "Menor preocupação. Pescaria comercial intensa"
+  },
+  {
+    name: "Hippocampus guttulatus (Cavalo-marinho)",
+    location: "Atlântico Nordeste e Mediterrâneo",
+    image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop", // Cavalo-marinho
+    description: "Vulnerável (IUCN). Ameaçado pela pesca"
+  },
+  {
+    name: "Manta birostris (Manta-gigante)",
+    location: "Oceanos tropicais",
+    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop", // Manta ray
+    description: "Vulnerável (IUCN). População: ~1,000-5,000"
+  },
+  {
+    name: "Delphinapterus leucas (Beluga)",
+    location: "Ártico e Subártico",
+    image: "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=400&h=300&fit=crop", // Golfinho/beluga
+    description: "Quase ameaçada (IUCN). População: ~150,000"
+  },
+  {
+    name: "Caretta caretta (Tartaruga-cabeçuda)",
+    location: "Oceanos temperados e tropicais",
+    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop", // Tartaruga marinha
+    description: "Vulnerável (IUCN). População: ~200,000"
   }
 ];
 

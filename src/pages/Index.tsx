@@ -1,6 +1,5 @@
 
 import { MetricCard } from "@/components/MetricCard";
-import { ImpactCalculator } from "@/components/ImpactCalculator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Leaf, Earth, Recycle, TreePalm, Lightbulb, Search } from "lucide-react";
@@ -55,11 +54,6 @@ const Index = () => {
             icon={Recycle}
             subtitle="toneladas/ano (ONU)"
           />
-        </div>
-
-        {/* Impact Calculator */}
-        <div className="mb-8 flex justify-center">
-          <ImpactCalculator />
         </div>
 
         {/* Sustainability Section */}
